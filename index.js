@@ -3,18 +3,18 @@ import fs from 'fs/promises';
 
 const app = express();
 
-app.get('/', async (request, response) => {
+app.get('/', async (req, res) => {
   const buf = await fs.readFile('./static/index.html');
   const html = buf.toString();
 
-  response.send(html);
+  res.render(html);
 });
 
-app.get('/:page', async (request, response) => {
-  const buf = await fs.readFile(request.params.page);
+app.get('/:page', async (req, res) => {
+  const buf = await fs.readFile(req.params.page);
   const html = buf.toString();
 
-  response.send(html);
+  res.render(html);
 });
 
 app.use(
