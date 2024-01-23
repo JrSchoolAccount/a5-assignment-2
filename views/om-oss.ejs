@@ -37,16 +37,16 @@
       content="https://jrschoolaccount.github.io/Group-Assignment2-Cinema-Project/assets/logga.png"
     />
     <title>Om oss</title>
-    <link rel="stylesheet" type="text/css" href="static/assets/main.css" />
-    <link rel="icon" type="image/png" href="static/assets/logga.png" />
-    <script type="module" src="static/main.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./static/assets/main.css" />
+    <link rel="icon" type="image/png" href="./static/assets/logga.png" />
+    <script type="module" src="./static/main.js" defer></script>
   </head>
 
   <body class="about-us-body">
-    <header id="header"></header>
+    <%- include('../views/partials/header.ejs') %>
     <img
       class="background__raining"
-      src="static/assets/raining-background.jpg"
+      src="./static/assets/raining-background.jpg"
       alt="raining in the background"
     />
     <main class="about-us-main">
@@ -96,6 +96,6 @@
       </p>
     </main>
 
-    <footer id="footer"></footer>
+    <%- include('../views/partials/footer.ejs') %>
   </body>
 </html>

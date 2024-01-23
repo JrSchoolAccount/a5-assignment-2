@@ -1,22 +1,31 @@
 import express from 'express';
 import fs from 'fs/promises';
+import ejs from 'ejs';
 
 const app = express();
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 app.get('/', async (req, res) => {
-  const buf = await fs.readFile('./static/index.html');
-  const html = buf.toString();
-
-  res.send(html);
+  res.render('index');
 });
 
-app.get('/:page', async (req, res) => {
-  const buf = await fs.readFile('./static/' + req.params.page + '.html');
-  const html = buf.toString();
+app.get('/om-oss', async (req, res) => {
+  res.render('om-oss');
+});
 
-  res.send(html);
+app.get('/biljetter', async (req, res) => {
+  res.render('biljetter');
+});
+
+app.get('/evenemang', async (req, res) => {
+  res.render('evenemang');
+});
+
+app.get('/filmer', async (req, res) => {
+  res.render('filmer');
 });
 
 app.use('/static', express.static('./static'));
 
-app.listen(3080);
+app.listen(5080);
