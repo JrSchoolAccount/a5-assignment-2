@@ -228,10 +228,34 @@ body .background__raining {
   margin-top: 1em;
 }
 
-.header h1 {
+main li a {
   font-size: 2em;
+  color: rgba(255, 255, 255, 0.781);
+}
+
+main li :hover {
+  font-size: 2.1em;
+  color: white;
+}
+
+main a {
+  font-size: 2em;
+  color: white;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  color: white;
+  font-size: 1.7em;
+  max-width: 25em;
+  margin-bottom: 1em;
 }
 
 .movie img {
-  max-width: 14em;
+  max-width: 60em;
 }
