@@ -29,23 +29,13 @@ app.get('/evenemang', async (req, res) => {
 });
 
 app.get('/filmer', async (req, res) => {
-  try {
-    const movies = await loadMovies();
-    res.render('filmer', { movies });
-  } catch (error) {
-    console.error('Error fetching movies:', error);
-    res.status(500).send('Internal Server Error');
-  }
+  const movies = await loadMovies();
+  res.render('filmer', { movies });
 });
 
 app.get('/filmer/:movieId', async (req, res) => {
-  try {
-    const movie = await loadMovie(req.params.movieId);
-    res.render('film', { movie, renderMarkdown });
-  } catch (error) {
-    console.error(`Error fetching movie with ID ${req.params.movieId}:`, error);
-    res.status(500).send('Internal Server Error');
-  }
+  const movie = await loadMovie(req.params.movieId);
+  res.render('film', { movie, renderMarkdown });
 });
 
 app.use('/static', express.static('./static'));
