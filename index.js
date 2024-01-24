@@ -2,11 +2,7 @@ import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './static/movies.js';
-import { marked } from 'marked';
-
-function renderMarkdown(text) {
-  return marked(text);
-}
+import { renderMarkdown } from './static/markdown.js';
 
 const app = express();
 app.set('view engine', 'ejs');
