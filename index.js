@@ -1,8 +1,8 @@
 import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
-import { loadMovie, loadMovies } from './static/movies.js';
-import { renderMarkdown } from './static/markdown.js';
+import { loadMovie, loadMovies } from './src/movies.js';
+import { renderMarkdown } from '.src/markdown.js';
 
 const app = express();
 app.set('view engine', 'ejs');

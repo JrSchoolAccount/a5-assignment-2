@@ -7,7 +7,7 @@
   "scripts": {
     "devStart": "nodemon .",
     "start": "node .",
-    "test": ""
+    "test": "jest"
   },
   "author": "JR",
   "license": "ISC",

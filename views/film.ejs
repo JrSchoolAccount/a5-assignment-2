@@ -52,10 +52,10 @@
     <main>
       <a href="/filmer">Tillbaka till Filmer</a>
       <article class="movie">
-        <h1><%= movie.attributes.title %></h1>
-        <div class="intro"><%- renderMarkdown(movie.attributes.intro) %></div>
-        <% if (movie.attributes.image) { %>
-        <img src="<%= movie.attributes.image.url %>" />
+        <h1><%= movie.title %></h1>
+        <div class="intro"><%- renderMarkdown(movie.intro) %></div>
+        <% if (movie.image) { %>
+        <img src="<%= movie.image.url %>" />
         <% } %>
       </article>
     </main>
