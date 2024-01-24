@@ -2,6 +2,11 @@ import express from 'express';
 import fs from 'fs/promises';
 import ejs from 'ejs';
 import { loadMovie, loadMovies } from './static/movies.js';
+import { marked } from 'marked';
+
+function renderMarkdown(text) {
+  return marked(text);
+}
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -36,7 +41,7 @@ app.get('/filmer', async (req, res) => {
 app.get('/filmer/:movieId', async (req, res) => {
   try {
     const movie = await loadMovie(req.params.movieId);
-    res.render('film', { movie });
+    res.render('film', { movie, renderMarkdown });
   } catch (error) {
     console.error(`Error fetching movie with ID ${req.params.movieId}:`, error);
     res.status(500).send('Internal Server Error');
