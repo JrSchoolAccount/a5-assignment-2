@@ -64,3 +64,12 @@ test('The Muppets page shows movie title', async () => {
 
   expect(response.text).toMatch('The Muppets');
 });
+
+test('Id not found respond with 404', async () => {
+  const response = await request(app)
+    .get('/filmer/1337')
+    .expect('Content-Type', 'text/html; charset=utf-8')
+    .expect(404);
+
+  expect(response.text).toMatch('404');
+});
