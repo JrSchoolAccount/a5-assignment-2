@@ -8,6 +8,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+app.use('/static', express.static('./static'));
+
 app.get('/', async (req, res) => {
   res.render('index');
 });
@@ -30,10 +32,20 @@ app.get('/filmer', async (req, res) => {
 });
 
 app.get('/filmer/:movieId', async (req, res) => {
-  const movie = await loadMovie(req.params.movieId);
-  res.render('film', { movie, renderMarkdown });
+  try {
+    const movie = await loadMovie(req.params.movieId);
+    res.render('film', { movie, renderMarkdown });
+  } catch (error) {
+    if (error.message === 'Movie not found') {
+      res.status(404).render('filmer404');
+    } else {
+      res.status(500).send('Internal Server Error');
+    }
+  }
 });
 
-app.use('/static', express.static('./static'));
+app.get('*', (req, res) => {
+  res.status(404).render('404.ejs');
+});
 
 export default app;
